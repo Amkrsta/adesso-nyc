@@ -1,0 +1,261 @@
+
+@font-face {
+    font-family: 'Instrument Serif';
+    src: url('./assets/fonts/InstrumentSerif-Regular.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Instrument Serif', Georgia, serif;
+}
+
+body {
+    margin: 0;
+    background-color: #DFD1B6;
+}
+
+/* ── Navigation ── */
+#links {
+    text-align: right;
+    font-family: 'Instrument Serif', Arial, sans-serif;
+    font-size: larger;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+
+    background-color: rgba(223, 209, 182, 0.85);
+    backdrop-filter: blur(1px);
+    padding: 6px 0;
+}
+
+.link {
+    margin-right: 10px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* ── Header ── */
+header {
+    background-image: url("../assets/Header1.jpg");
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 15px;
+    padding-top: 50px;
+
+    position: relative;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#title1 {
+    font-size: 4em;
+    text-align: center;
+    margin: 0;
+    color: #ffffff;
+    padding: 0;
+    text-shadow: 0 5px 2px #000000;
+}
+
+/* ── Container ── */
+.container {
+    display: grid;
+    gap: 4rem;
+    grid-template-columns: auto;
+    padding: 1rem;
+}
+
+/* ── Sections (Desktop: two columns) ── */
+section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* ── Headings ── */
+h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5em;
+    margin: 0;
+    padding: 1rem;
+    text-align: center;
+
+}
+
+/* ── Image containers ── */
+.image-container-r,
+.image-container-l {
+    display: flex;
+    max-height: 55vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.img-right {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.img-left {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin-left: 10px;
+}
+
+.image {
+    width: 55%;
+    object-fit: cover;
+}
+
+/* All images fill their containers */
+.img-right img,
+.img-left img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    flex: 1;
+}
+
+/* ── Tablet (max 900px) ── */
+@media (max-width: 900px) {
+
+    #title1 {
+        font-size: 2.8em;
+    }
+
+    header {
+        height: 170px;
+    }
+
+    section {
+        grid-template-columns: 1fr;
+        /* Stack heading on top, images below for all sections */
+    }
+
+    /* Always put h2 first visually */
+    section h2 {
+        order: -1;
+        font-size: 2em;
+        margin: 0 0 0.5rem 0;
+    }
+
+    .image-container-r,
+    .image-container-l {
+        max-height: 40vh;
+        width: 100%;
+    }
+
+    .img-right,
+    .img-left {
+        width: 40%;
+        margin-left: 0;
+    }
+
+    .image {
+        width: 60%;
+    }
+
+    h2 {
+        font-size: 2em;
+        margin: 0;
+        padding: 0.5rem;
+    }
+}
+
+/* ── Mobile (max 600px) ── */
+@media (max-width: 600px) {
+
+    #links {
+        font-size: 0.9rem;
+        padding: 8px 10px;
+    }
+
+    .link {
+        margin-right: 6px;
+    }
+
+    header {
+        height: 140px;
+        padding-top: 44px;
+    }
+
+    #title1 {
+        font-size: 2em;
+    }
+
+    .container {
+        gap: 2.5rem;
+        padding: 0.5rem;
+    }
+
+    section {
+        grid-template-columns: 1fr;
+    }
+
+    section h2 {
+        order: -1;
+        font-size: 1.6em;
+        padding: 0.25rem 0.5rem;
+        margin: 0;
+    }
+
+    /* On mobile: stack images vertically in a simple column */
+    .image-container-r,
+    .image-container-l {
+        flex-direction: column;
+        max-height: none;
+        width: 100%;
+    }
+
+    .img-right,
+    .img-left {
+        flex-direction: row;   /* show the two small images side-by-side */
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .img-right img,
+    .img-left img {
+        height: 160px;
+        width: 50%;
+    }
+
+    .image {
+        width: 100%;
+        max-height: 220px;
+        object-fit: cover;
+    }
+
+    /* Sections that only have img-left / img-right (no image-container wrapper) */
+    #terminal .img-left,
+    #library .img-right {
+        flex-direction: row;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    #terminal .img-left img,
+    #library .img-right img {
+        width: 50%;
+        height: 180px;
+        object-fit: cover;
+    }
+
+    h2 {
+        font-size: 1.6em;
+    }
+}
